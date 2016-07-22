@@ -136,11 +136,20 @@ public class UsersChatAdapter extends RecyclerView.Adapter<UsersChatAdapter.View
             user.setCurrentUserName(mCurrentUserName);
             user.setCurrentUserCreatedAt(mCurrentUserCreatedAt);
 
-            Intent intent=new Intent(mContextViewHolder, ChatActivity.class);
+            // Create a chat activity
+            Intent chatIntent=new Intent(mContextViewHolder, ChatActivity.class);
+
+            // Attach data to activity as a parcelable object
+            chatIntent.putExtra(ReferenceClass.KEY_PASS_USERS_INFO,user);
+
+            // Start new activity
+            mContextViewHolder.startActivity(chatIntent);
+
+            /* Intent intent=new Intent(mContextViewHolder, ChatActivity.class);
             intent.putExtra(ReferenceClass.KEY_PASS_USERS_INFO,user);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            mContextViewHolder.startActivity(intent);
+            mContextViewHolder.startActivity(intent); */
         }
     }
 }

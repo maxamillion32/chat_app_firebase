@@ -170,10 +170,10 @@ public class MainActivity extends Activity {
                 if(connected) {
                     myConnectionsStatusRef.setValue(ReferenceClass.KEY_ONLINE);
                     myConnectionsStatusRef.onDisconnect().setValue(ReferenceClass.KEY_OFFLINE);
-                    Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(MainActivity.this, "Disconnected", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Disconnected", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -4,6 +4,9 @@
       tools:context=".MainActivity">
       <item android:id="@+id/action_logout"
             android:title="Logout"
-            android:orderInCategory="100"
-            app:showAsAction="never"/>
+             />
 </menu>
+
+
+
+<!-- android:orderInCategory="100" -->

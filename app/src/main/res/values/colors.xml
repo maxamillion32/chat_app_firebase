@@ -6,8 +6,9 @@
     <color name="accent">#448AFF</color>
     <color name="colorAccent">#448AFF</color>
     <color name="divider">#B6B6B6</color>
-    <color name="text_color">#FFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="text_color_icon">#212121</color>
     <color name="primary">#FF5722</color>
+    <color name="black">#000000</color>
 
 </resources>
