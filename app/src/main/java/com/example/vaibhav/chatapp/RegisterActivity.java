@@ -88,9 +88,9 @@ public class RegisterActivity extends Activity {
                                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                                        //Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
                                         if(!task.isSuccessful()) {
-                                            Log.w(TAG,"signInWithEmail",task.getException());
+                                            //Log.w(TAG,"signInWithEmail",task.getException());
                                             showErrorMessageToUser("An error occurred!");
                                             finish();
                                         }
@@ -118,7 +118,7 @@ public class RegisterActivity extends Activity {
                                             }
                                             else {
                                                 Toast.makeText(RegisterActivity.this, "SignInResult:user=null", Toast.LENGTH_SHORT).show();
-                                                Log.w(TAG,"afterRegisterAndLogIn:user=null");
+                                                //Log.w(TAG,"afterRegisterAndLogIn:user=null");
                                             }
                                         }
                                     }

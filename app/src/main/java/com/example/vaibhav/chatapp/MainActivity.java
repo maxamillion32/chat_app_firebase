@@ -68,13 +68,13 @@ public class MainActivity extends Activity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //user is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    //Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     mCurrentUserUid = user.getUid();
                     mCurrentUserEmail = user.getEmail();
                     queryFireChatUsers();               //query all users except current user
                 } else {
                     //user is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    //Log.d(TAG, "onAuthStateChanged:signed_out");
                     navigateToLogin();
                 }
             }
@@ -92,7 +92,7 @@ public class MainActivity extends Activity {
         if (mAuthStateListener != null) {
             mAuthData.removeAuthStateListener(mAuthStateListener);
         }
-        Log.e(TAG, "I am onStop");
+        //Log.e(TAG, "I am onStop");
     }
     private void navigateToLogin() {
 
@@ -107,10 +107,10 @@ public class MainActivity extends Activity {
         mListenerUsers=mFireChatUsersRef.limitToFirst(50).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.d(TAG,"inside onChildAdded");
+                //Log.d(TAG,"inside onChildAdded");
                 hideProgressBarForUsers();
                 if(dataSnapshot.exists()) {
-                    Log.d(TAG,"new user was added");
+                    //Log.d(TAG,"new user was added");
                     String userUid=dataSnapshot.getKey();
                     if(!userUid.equals(mCurrentUserUid)) {
                         UsersChatModel user=dataSnapshot.getValue(UsersChatModel.class);
@@ -140,7 +140,7 @@ public class MainActivity extends Activity {
                         user.setCurrentUserEmail(mCurrentUserEmail);
                         user.setCurrentUserUid(mCurrentUserUid);
                         int index = mUsersKeyList.indexOf(userUid);
-                        Log.e(TAG, "change index "+index);
+                        //Log.e(TAG, "change index "+index);
                         mUsersChatAdapter.changeUser(index, user);
                     }
 
@@ -187,20 +187,20 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        int size=mUsersKeyList.size();
-        Log.e(TAG, " size"+size);
+        //int size=mUsersKeyList.size();
+        //Log.e(TAG, " size"+size);
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "I am onPause");
+        //Log.e(TAG, "I am onPause");
     }
 
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(TAG,"I an onDestroy");
+        //Log.e(TAG,"I an onDestroy");
         if (mAuthStateListener != null) {
             mAuthData.removeAuthStateListener(mAuthStateListener);
         }
@@ -226,21 +226,13 @@ public class MainActivity extends Activity {
     private void logout() {
 
         if (this.mAuthData != null) {
-
-            /* Logout of mChat */
-
-            // Store current user status as offline
             myConnectionsStatusRef.setValue(ReferenceClass.KEY_OFFLINE);
             FirebaseAuth.getInstance().signOut();
             onStop();
-            // Finish token
-            //mFirebaseChatRef.unauth();
-
-            /* Update authenticated user and show login screen */
-            //setAuthenticatedUser(null);
+            navigateToLogin();
         }
     }
-    private void setAuthenticatedUser(FirebaseAuth authData) {
+    /*  private void setAuthenticatedUser(FirebaseAuth authData) {
         mAuthData=authData;
         if(authData!=null) {
             //user auth has not expired yet
@@ -253,7 +245,7 @@ public class MainActivity extends Activity {
             //Token expired or user logged out
             navigateToLogin();
         }
-    }
+    }   */
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);

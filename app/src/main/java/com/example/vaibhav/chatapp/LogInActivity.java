@@ -71,9 +71,9 @@ public class LogInActivity extends Activity {
                                 .addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        Log.d(TAG,"signInWithEmail:onComplete:"+task.isSuccessful());
+                                        //Log.d(TAG,"signInWithEmail:onComplete:"+task.isSuccessful());
                                         if(!task.isSuccessful()) {
-                                            Log.w(TAG,"signInWithEmail",task.getException());
+                                            //Log.w(TAG,"signInWithEmail",task.getException());
                                             showErrorMessageToUser("Authentication Failed!");
                                         }
                                         else {

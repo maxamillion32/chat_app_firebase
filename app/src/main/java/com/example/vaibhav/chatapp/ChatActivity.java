@@ -62,16 +62,16 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e(TAG, " I am onDestroy");
+        //Log.e(TAG, " I am onDestroy");
     }
     protected void onStart() {
         super.onStart();
-        Log.d(TAG,"I am onStart");
+        //Log.d(TAG,"I am onStart");
         mMessageChatListener=mFirebaseMessagesChat.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 if(dataSnapshot.exists()) {
-                    Log.d(TAG,"A new chat was inserted");
+                    //Log.d(TAG,"A new chat was inserted");
                     MessageChatModel newMessage=dataSnapshot.getValue(MessageChatModel.class);
                     if(newMessage.getSender().equals(mSenderUid)) {
                         newMessage.setRecipientOrSenderStatus(SENDER_STATUS);
@@ -107,14 +107,14 @@ public class ChatActivity extends AppCompatActivity {
     }
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "I am onPause");
+        //Log.e(TAG, "I am onPause");
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e(TAG, "I am onStop");
+        //Log.e(TAG, "I am onStop");
 
         // Remove listener
         if(mMessageChatListener !=null) {
@@ -130,7 +130,7 @@ public class ChatActivity extends AppCompatActivity {
         String senderMessage=mUserMessageChatText.getText().toString();
         senderMessage=senderMessage.trim();
         if(!senderMessage.isEmpty()) {
-            Log.d(TAG,"Send message");
+            //Log.d(TAG,"Send message");
             Map<String,String> newMessage =new HashMap<String, String>();
             newMessage.put("sender",mSenderUid);
             newMessage.put("recipient",mRecipientUid);
@@ -138,5 +138,11 @@ public class ChatActivity extends AppCompatActivity {
             mFirebaseMessagesChat.push().setValue(newMessage);
             mUserMessageChatText.setText("");
         }
+    }
+    public void onBackPressed() {
+        Intent intent=new Intent(ChatActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }
