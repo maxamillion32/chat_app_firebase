@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/primary"
+
+    tools:context=".LogInActivity">
+
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/userEmailChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/log_in_margin"
+        android:layout_marginRight="@dimen/log_in_margin"
+        android:layout_marginTop="40dp"
+        android:hint="email"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/passWordChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginLeft="@dimen/log_in_margin"
+        android:layout_marginRight="@dimen/log_in_margin"
+        android:hint="password"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btn_LogInChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LogIn"
+        android:background="@color/text_color"
+        android:textColor="@color/primary"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/log_in_margin"
+        android:layout_marginRight="@dimen/log_in_margin"/>
+
+    <Button
+        android:id="@+id/registerUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="@color/primary"
+        android:background="@color/text_color"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/log_in_margin"
+        android:layout_marginRight="@dimen/log_in_margin"/>
+
+</LinearLayout>
